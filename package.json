@@ -2,7 +2,7 @@
   "name": "lu-behaviors",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/harrisonfishco/lu-behaviors/issues"
   },
-  "homepage": "https://github.com/harrisonfishco/lu-behaviors#readme"
+  "homepage": "https://github.com/harrisonfishco/lu-behaviors#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
