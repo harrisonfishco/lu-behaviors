@@ -92,7 +92,7 @@
             var network = new vis.Network(container, data, options);
             //body -> nodes -> 1 -> options -> DATA
             network.addEventListener("select", e => {
-                console.log(network.body.nodes[e.nodes[0]].options)
+                console.log(network.body.nodes[e.nodes[0]])
             })
         </script>
 
