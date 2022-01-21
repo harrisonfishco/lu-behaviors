@@ -1,0 +1,19 @@
+{
+  "name": "lu-behaviors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrisonfishco/lu-behaviors.git"
+  },
+  "author": "Harrison Fishco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harrisonfishco/lu-behaviors/issues"
+  },
+  "homepage": "https://github.com/harrisonfishco/lu-behaviors#readme"
+}
