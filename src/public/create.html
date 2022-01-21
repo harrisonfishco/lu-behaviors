@@ -88,11 +88,19 @@
                         centralGravity: 0.1
                     },
                 },
+                manipulation: {
+                    enabled: true,
+                    initiallyActive: true,
+                }
             };
             var network = new vis.Network(container, data, options);
             //body -> nodes -> 1 -> options -> DATA
             network.addEventListener("select", e => {
-                console.log(network.body.nodes[e.nodes[0]])
+                if(e.nodes.length == 1) { //Selected Node
+                    console.log(network.body.nodes[e.nodes[0]].options)
+                } else { //Selected Edge
+                    console.log(network.getSelectedEdges())
+                }
             })
         </script>
 
