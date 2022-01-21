@@ -1,0 +1,12 @@
+<div class="table-responsive">
+  <table *ngIf="table">
+    <thead>
+      <tr><th>Key</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of table | keys | nonnull">
+        <td>{{entry.key}}</td><td>{{entry.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

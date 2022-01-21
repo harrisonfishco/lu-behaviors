@@ -1,0 +1,7 @@
+#mynetwork {
+    color: #000;
+}
+
+.skill-link + .skill-link::before {
+    content: ", ";
+}
