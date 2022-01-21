@@ -1,0 +1,16 @@
+html {
+    background-color: #1b172c;
+    color: #eee;
+    font-family: Roboto, 'Arial', sans-serif;
+}
+
+#mynetwork {
+    width: 100%;
+    height: 700px;
+    border: 1px solid #0D1117;
+    background: #0D1117
+}
+
+.nodeName {
+    text-align: center;
+}
