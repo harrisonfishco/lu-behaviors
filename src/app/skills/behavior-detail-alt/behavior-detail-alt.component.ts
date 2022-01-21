@@ -9,7 +9,7 @@ declare var vis: any;
 @Component({
   selector: 'app-behavior-detail-alt',
   templateUrl: './behavior-detail-alt.component.html',
-  styleUrls: ['./behavior-detail-alt.component.css', '../../../../node_modules/vis-network/dist/vis-network.min.css']
+  styleUrls: ['./behavior-detail-alt.component.css', '../../../../node_modules/vis/dist/vis-network.min.css']
 })
 
 export class BehaviorDetailAltComponent implements OnInit {
