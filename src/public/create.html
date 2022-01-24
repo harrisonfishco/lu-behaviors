@@ -2,6 +2,7 @@
 <html>
     <head>
         <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+        <script src="/editNode.js"></script>
         <link rel="stylesheet" href="create.css">  
     </head>
     <body>
@@ -23,7 +24,7 @@
                 { from: 2, to: 3 },
                 { from: 3, to: 4 }
             ]);
-        
+
               // create a network
             var container = document.getElementById("mynetwork");
             var data = {
@@ -91,6 +92,7 @@
                 manipulation: {
                     enabled: true,
                     initiallyActive: true,
+                    editNode: editNode
                 }
             };
             var network = new vis.Network(container, data, options);

@@ -14,3 +14,22 @@ html {
 .nodeName {
     text-align: center;
 }
+
+.edit-node-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.edit-node-background > .edit-node-card {
+    width: 500px;
+    height: 90%;
+    background-color: white;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 10px;
+}
