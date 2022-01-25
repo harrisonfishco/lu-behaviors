@@ -11,8 +11,17 @@ const editNode = (data, callback) => {
     const defaultType = document.createElement('option')
     defaultType.setAttribute('value', '')
     defaultType.setAttribute('default', '')
-    defaultType.innerText = "Select"
+    defaultType.innerText = "Select Behavior"
     type.appendChild(defaultType)
+
+    for(var i = 0; i < BEHAVIORS.length; ++i) {
+        if(BEHAVIORS[i] != null) {
+            const op = document.createElement('option')
+            op.setAttribute('value', i)
+            op.innerText = `${i}: ${BEHAVIORS[i]}`
+            type.appendChild(op)
+        }
+    }
 
     card.appendChild(type)
 
@@ -31,7 +40,8 @@ const editNode = (data, callback) => {
     const submit = document.createElement('button')
     submit.innerText = "Edit"
     submit.addEventListener('click', e => {
-        data.label += " EDITED"
+        data.label = BEHAVIORS[type.value]
+        data.templateID = type.value
         callback(data)
         background.remove()
     })
