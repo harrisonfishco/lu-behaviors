@@ -3,7 +3,7 @@ const app = express()
 
 app.use(express.static('src/public'))
 
-app.use('/res/textures/ui/inventory/skills', express.static('src/res/skills'))
+app.use('/lu-res/textures/ui/inventory/skills', express.static('src/res/skills'))
 
 app.get('/', (req, res) => {
     res.sendFile("/index.html")
