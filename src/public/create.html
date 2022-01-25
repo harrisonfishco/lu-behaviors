@@ -4,6 +4,8 @@
         <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
         <script src="/behaviorTypes.js"></script>
         <script src="/editNode.js"></script>
+        <script src="network.js"></script>
+        <script src="/scripts/base64.js"></script>
         <link rel="stylesheet" href="create.css">  
     </head>
     <body>
@@ -12,26 +14,26 @@
             <h2 class='nodeName'>Selected Node: Null</h2>
         </div>
         <script>console.log("init")
-            var nodes = new vis.DataSet([
-                { id: 1, label: "Movement Switch", data: {} },
-                { id: 2, label: "Node 2" },
-                { id: 3, label: "Node 3" },
-                { id: 4, label: "Node 4" }
-            ]);
+            // var nodes = new vis.DataSet([
+            //     { id: 1, label: "Movement Switch", data: {} },
+            //     { id: 2, label: "Node 2" },
+            //     { id: 3, label: "Node 3" },
+            //     { id: 4, label: "Node 4" }
+            // ]);
         
-              // create an array with edges
-            var edges = new vis.DataSet([
-                { from: 1, to: 2 },
-                { from: 2, to: 3 },
-                { from: 3, to: 4 }
-            ]);
+            //   // create an array with edges
+            // var edges = new vis.DataSet([
+            //     { from: 1, to: 2 },
+            //     { from: 2, to: 3 },
+            //     { from: 3, to: 4 }
+            // ]);
 
               // create a network
             var container = document.getElementById("mynetwork");
-            var data = {
-                nodes: nodes,
-                edges: edges,
-            };
+            // var data = {
+            //     nodes: nodes,
+            //     edges: edges,
+            // };
             var options = {
                 width: '100%',
                 nodes: {
@@ -96,15 +98,16 @@
                     editNode: editNode
                 }
             };
-            var network = new vis.Network(container, data, options);
-            //body -> nodes -> 1 -> options -> DATA
-            network.addEventListener("select", e => {
-                if(e.nodes.length == 1) { //Selected Node
-                    console.log(network.body.nodes[e.nodes[0]].options)
-                } else { //Selected Edge
-                    console.log(network.getSelectedEdges())
-                }
-            })
+            // var network = new vis.Network(container, data, options);
+            // //body -> nodes -> 1 -> options -> DATA
+            // network.addEventListener("select", e => {
+            //     if(e.nodes.length == 1) { //Selected Node
+            //         console.log(network.body.nodes[e.nodes[0]].options)
+            //     } else { //Selected Edge
+            //         console.log(network.getSelectedEdges())
+            //     }
+            // })
+            var network = new NodeNetwork(vis, 4564)
         </script>
 
     </body>
