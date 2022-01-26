@@ -2,6 +2,13 @@ const createEditNode = (data, callback, network) => {
     const background = document.createElement('div')
     background.classList.add('edit-node-background')
     document.body.appendChild(background)
+
+    background.addEventListener('click', e => {
+        if(e.target === background) {
+            background.remove()
+            callback()
+        }
+    })
         
     const card = document.createElement('div')
     card.classList.add('edit-node-card')
@@ -13,8 +20,6 @@ const createEditNode = (data, callback, network) => {
     defaultType.setAttribute('default', '')
     defaultType.innerText = data.label
     type.appendChild(defaultType)
-    
-    console.log(network)
         
     for(var i = 0; i < BEHAVIORS.length; ++i) {
         if(BEHAVIORS[i] != null) {
