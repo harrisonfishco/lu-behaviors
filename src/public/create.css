@@ -33,11 +33,11 @@ html {
     border-radius: 10px;
 }
 
-.edit-node-param {
+.edit-node-param, .edit-node-info {
     padding: 8px 0px;
 }
 
-.edit-node-param-value {
+.edit-node-param-value, .edit-node-id-value {
     float: right;
     text-align: right;
     width: 50px;

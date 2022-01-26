@@ -27,6 +27,37 @@ const createEditNode = (data, callback, network) => {
     
     card.appendChild(type)
 
+    const infoDiv = document.createElement('div')
+    infoDiv.classList.add('edit-node-info-div')
+
+    const infoTitleDiv = document.createElement('div')
+    infoTitleDiv.classList.add('edit-node-info-title-div')
+
+    const infoTitle = document.createElement('h2')
+    infoTitle.classList.add('edit-node-info-title')
+    infoTitle.innerText = 'Information'
+
+    const infoBody = document.createElement('div')
+    infoBody.classList.add('edit-node-info-body')
+
+    const idHolder = document.createElement('div')
+    idHolder.classList.add('edit-node-id')
+    const idHolderName = document.createElement('span')
+    idHolderName.classList.add('edit-node-id-name')
+    idHolderName.innerText = "BehaviorID"
+    const idHolderValue = document.createElement('input')
+    idHolderValue.classList.add('edit-node-id-value')
+    idHolderValue.id = 'id'
+    idHolderValue.value = data.id
+    idHolder.appendChild(idHolderName)
+    idHolder.appendChild(idHolderValue)
+    infoBody.appendChild(idHolder)
+
+    infoDiv.appendChild(infoTitleDiv)
+    infoTitleDiv.appendChild(infoTitle)
+    infoDiv.appendChild(infoBody)
+    card.appendChild(infoDiv)
+
     const paramDiv = document.createElement('div')
     paramDiv.classList.add('edit-node-param-div')
     
@@ -68,14 +99,6 @@ const createEditNode = (data, callback, network) => {
     buttonBar.classList.add('edit-node-bar')
     card.appendChild(buttonBar)
     
-    const cancel = document.createElement('button')
-    cancel.innerText = "Cancel"
-    cancel.addEventListener('click', e => {
-        callback()
-        background.remove()
-    })
-    buttonBar.appendChild(cancel)
-    
     const submit = document.createElement('button')
     submit.innerText = "Edit"
     submit.addEventListener('click', e => {
@@ -83,4 +106,12 @@ const createEditNode = (data, callback, network) => {
         background.remove()
     })
     buttonBar.appendChild(submit)
+
+    const cancel = document.createElement('button')
+    cancel.innerText = "Cancel"
+    cancel.addEventListener('click', e => {
+        callback()
+        background.remove()
+    })
+    buttonBar.appendChild(cancel)
 }
