@@ -62,8 +62,10 @@ const createEditNode = (data, callback, network) => {
             typeHolderValue.appendChild(op)
         }
     }
-    
-    typeHolderValue.value = network.behaviors[data.id].templateID
+    console.log(network.behaviors[data.id])
+    if(network.behaviors[data.id] != undefined) {
+        typeHolderValue.value = network.behaviors[data.id].templateID
+    }
 
     typeHolder.appendChild(typeHolderName)
     typeHolder.appendChild(typeHolderValue)
@@ -84,21 +86,23 @@ const createEditNode = (data, callback, network) => {
 
     var params = []
 
-    for(var i in network.behaviors[data.id].parameters) {
-        params.push([i, network.behaviors[data.id].parameters[i]])
-        var paramHolder = document.createElement('div')
-        paramHolder.classList.add('edit-node-param')
-        var paramName = document.createElement('span')
-        paramName.classList.add('edit-node-param-name')
-        paramName.innerText = i
-        var paramValue = document.createElement('input')
-        paramValue.classList.add('edit-node-param-value')
-        paramValue.id = i
-        paramValue.value = network.behaviors[data.id].parameters[i]
+    if(network.behaviors[data.id] != undefined) {
+        for(var i in network.behaviors[data.id].parameters) {
+            params.push([i, network.behaviors[data.id].parameters[i]])
+            var paramHolder = document.createElement('div')
+            paramHolder.classList.add('edit-node-param')
+            var paramName = document.createElement('span')
+            paramName.classList.add('edit-node-param-name')
+            paramName.innerText = i
+            var paramValue = document.createElement('input')
+            paramValue.classList.add('edit-node-param-value')
+            paramValue.id = i
+            paramValue.value = network.behaviors[data.id].parameters[i]
 
-        paramHolder.appendChild(paramName)
-        paramHolder.appendChild(paramValue)
-        paramBody.appendChild(paramHolder)
+            paramHolder.appendChild(paramName)
+            paramHolder.appendChild(paramValue)
+            paramBody.appendChild(paramHolder)
+        }
     }
 
     paramDiv.appendChild(paramTitleDiv)
