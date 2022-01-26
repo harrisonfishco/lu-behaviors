@@ -25,10 +25,39 @@ html {
 }
 
 .edit-node-background > .edit-node-card {
-    width: 500px;
-    height: 90%;
-    background-color: white;
-    margin: 16px auto;
+    width: 750px;
+    height: 500px;
+    background-color: #313131;
+    margin: calc((50% - 250px) / 2) auto;
     padding: 16px;
     border-radius: 10px;
+}
+
+.edit-node-param {
+    padding: 8px 0px;
+}
+
+.edit-node-param-value {
+    float: right;
+    text-align: right;
+    width: 50px;
+    border: none;
+    border-radius: 2px;
+    background-color: #656565;
+    color: #fff;
+}
+
+.edit-node-bar > button {
+    float: right;
+    border: none;
+    background-color: #6161FF;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.edit-node-bar > button:hover, .edit-node-bar > button:active {
+    background-color: #D14600;
 }
