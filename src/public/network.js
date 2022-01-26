@@ -415,7 +415,8 @@ class NodeNetwork {
             manipulation: {
                 enabled: true,
                 initiallyActive: true,
-                editNode: this.editNode
+                editNode: this.editNode,
+                addNode: this.addNode
             }
         }
         this.network = new this.vis.Network(this.container, data, options)
@@ -423,6 +424,10 @@ class NodeNetwork {
 
     editNode(data, callback) {
         createEditNode(data, callback, network)
+    }
+
+    addNode(data, callback) {
+        createAddNode(data, callback, network)
     }
 
     convertSQLite(edgeStart, nodeStart) {
