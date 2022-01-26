@@ -33,7 +33,7 @@ html {
     border-radius: 10px;
 }
 
-.edit-node-param, .edit-node-info {
+.edit-node-param, .edit-node-info, .edit-node-type, .edit-node-id {
     padding: 8px 0px;
 }
 
@@ -43,6 +43,12 @@ html {
     width: 50px;
     border: none;
     border-radius: 2px;
+    background-color: #656565;
+    color: #fff;
+}
+
+.edit-node-type-value {
+    float: right;
     background-color: #656565;
     color: #fff;
 }

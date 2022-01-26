@@ -13,24 +13,6 @@ const createEditNode = (data, callback, network) => {
     const card = document.createElement('div')
     card.classList.add('edit-node-card')
     background.appendChild(card)
-        
-    const type = document.createElement('select')
-    const defaultType = document.createElement('option')
-    defaultType.setAttribute('value', '')
-    defaultType.setAttribute('default', '')
-    defaultType.innerText = data.label
-    type.appendChild(defaultType)
-        
-    for(var i = 0; i < BEHAVIORS.length; ++i) {
-        if(BEHAVIORS[i] != null) {
-            const op = document.createElement('option')
-            op.setAttribute('value', i)
-            op.innerText = `${i}: ${BEHAVIORS[i]}`
-            type.appendChild(op)
-        }
-    }
-    
-    card.appendChild(type)
 
     const infoDiv = document.createElement('div')
     infoDiv.classList.add('edit-node-info-div')
@@ -62,6 +44,30 @@ const createEditNode = (data, callback, network) => {
     infoTitleDiv.appendChild(infoTitle)
     infoDiv.appendChild(infoBody)
     card.appendChild(infoDiv)
+
+    const typeHolder = document.createElement('div')
+    typeHolder.classList.add('edit-node-type')
+    const typeHolderName = document.createElement('span')
+    typeHolderName.classList.add('edit-node-type-name')
+    typeHolderName.innerText = "TemplateID"
+    const typeHolderValue = document.createElement('select')
+    typeHolderValue.classList.add('edit-node-type-value')
+    typeHolderValue.id = 'type'
+    
+    for(var i = 0; i < BEHAVIORS.length; ++i) {
+        if(BEHAVIORS[i] != null) {
+            const op = document.createElement('option')
+            op.setAttribute('value', i)
+            op.innerText = `${i}: ${BEHAVIORS[i]}`
+            typeHolderValue.appendChild(op)
+        }
+    }
+    
+    typeHolderValue.value = network.behaviors[data.id].templateID
+
+    typeHolder.appendChild(typeHolderName)
+    typeHolder.appendChild(typeHolderValue)
+    infoBody.appendChild(typeHolder)
 
     const paramDiv = document.createElement('div')
     paramDiv.classList.add('edit-node-param-div')
