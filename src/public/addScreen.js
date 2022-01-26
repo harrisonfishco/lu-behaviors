@@ -101,8 +101,31 @@ const createAddNode = (data, callback, network) => {
     const submit = document.createElement('button')
     submit.innerText = "Create"
     submit.addEventListener('click', e => {
-        callback(data)
+        const bID = parseInt(idHolderValue.value)
+        const tID = parseInt(typeHolderValue.value)
+
+        var p = BEHAVIOR_PARAMETERS[tID]
+
+        console.log(`Creating behavior ${bID} using templateID ${tID}`)
+        for(var i = 0; i < paramBody.childNodes.length; ++i)
+            p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
+
+        const behaviorData = {
+            behaviorID: bID,
+            effectHandle: null,
+            effectID: 0,
+            parameters: p,
+            templateID: tID
+        }
+
+        this.network.behaviors[bID] = behaviorData
+
+        console.log(network)
+        this.network.nodes.push({id: bID, label: String(bID), level: 0})
+        this.network.process(bID, 0)
+        this.network.redraw()
         background.remove()
+        callback()
     })
     buttonBar.appendChild(submit)
 
@@ -115,7 +138,6 @@ const createAddNode = (data, callback, network) => {
     buttonBar.appendChild(cancel)
 
     var cvalue = typeHolderValue.value
-    var params = []
 
     typeHolderValue.addEventListener('change', e => {
         const newValue = e.target.value

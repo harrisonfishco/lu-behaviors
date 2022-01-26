@@ -113,7 +113,7 @@ class NodeNetwork {
         let node = this.findNode(id)
         if(!behavior) {
             node.label = "NULL"
-            this.errors.push(id)
+            //this.errors.push(id)
             return
         }
         node.templateID = behavior.templateID
