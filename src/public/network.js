@@ -108,6 +108,7 @@ class NodeNetwork {
             return
         }
         node.templateID = behavior.templateID
+        //COPIED FROM Xiphoseer/lu-explorer "src/app/skills/behavior-detail-alt/behavior-detail-alt.component.ts:92-303"
         if (behavior.templateID == 1) {
             node.label = "BasicAttack";
             node.shape = 'image';
