@@ -354,7 +354,7 @@ class NodeNetwork {
 
         var options = {
             width: '100%',
-            height: m * (900 / i) + 'px',
+            height: Math.min(m * (900 / i), window.innerHeight) + 'px',
             nodes: {
                 font: {
                 size: 30,

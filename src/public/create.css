@@ -2,6 +2,11 @@ html {
     background-color: #1b172c;
     color: #eee;
     font-family: Roboto, 'Arial', sans-serif;
+    height: 100%
+}
+
+body {
+    height: calc(100% - 16px);
 }
 
 #mynetwork {
@@ -28,7 +33,7 @@ html {
     width: 750px;
     height: 500px;
     background-color: #313131;
-    margin: calc((50% - 250px) / 2) auto;
+    margin: calc((50% - 250px) / 4) auto;
     padding: 16px;
     border-radius: 10px;
 }
