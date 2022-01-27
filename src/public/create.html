@@ -13,7 +13,11 @@
         <div id="mynetwork"></div>
         <script>console.log("init")
             var container = document.getElementById("mynetwork");
-            var network = new NodeNetwork(vis, 4564)
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.get('id') != undefined)
+                var network = new NodeNetwork(vis, urlParams.get('id'))
+            else
+                var network = new NodeNetwork(vis)
         </script>
 
     </body>

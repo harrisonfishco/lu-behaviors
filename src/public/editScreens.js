@@ -1,4 +1,10 @@
 const createEditNode = (data, callback, network) => {
+    if(network.behaviors[data.id] == undefined) {
+        callback()
+        //background.remove()
+        createAddNode(data, callback, network)
+        return
+    }
     const background = document.createElement('div')
     background.classList.add('edit-node-background')
     document.body.appendChild(background)
@@ -113,12 +119,63 @@ const createEditNode = (data, callback, network) => {
     const buttonBar = document.createElement('div')
     buttonBar.classList.add('edit-node-bar')
     card.appendChild(buttonBar)
+
+    var cvalue = network.behaviors[data.id].templateID
+
+    typeHolderValue.addEventListener('change', e => {
+        const newValue = e.target.value
+        if(cvalue != newValue) {
+            cvalue = newValue
+
+            for(var i = 0; i < paramBody.childNodes.length; ++i)
+                paramBody.childNodes[i].remove()
+
+            for(var i in BEHAVIOR_PARAMETERS[newValue]) {
+                params.push([i, BEHAVIOR_PARAMETERS[newValue][i]])
+                const paramHolder = document.createElement('div')
+                paramHolder.classList.add('edit-node-param')
+                const paramName = document.createElement('span')
+                paramName.classList.add('edit-node-param-name')
+                paramName.innerText = i
+                const paramValue = document.createElement('input')
+                paramValue.classList.add('edit-node-param-value')
+                paramValue.id = i
+                paramValue.value = BEHAVIOR_PARAMETERS[newValue][i]
+
+                paramHolder.appendChild(paramName)
+                paramHolder.appendChild(paramValue)
+                paramBody.appendChild(paramHolder)
+            }
+        }
+    })
     
     const submit = document.createElement('button')
     submit.innerText = "Edit"
     submit.addEventListener('click', e => {
-        callback(data)
+        if(cvalue != network.behaviors[data.id].templateID) {
+            const bID = parseInt(idHolderValue.value)
+            const tID = parseInt(typeHolderValue.value)
+
+            var p = BEHAVIOR_PARAMETERS[tID]
+
+            console.log(`Editing behavior ${bID} using templateID ${tID}`)
+            for(var i = 0; i < paramBody.childNodes.length; ++i)
+                p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
+            
+            if(bID != data.id) {
+                network.behaviors[bID] = network.behaviors[data.id]
+                network.behaviors[bID].behaviorID = bID
+                network.behaviors[data.id] = undefined
+            }
+
+            console.log(p)
+            network.behaviors[bID].templateID = tID
+            network.behaviors[bID].parameters = p
+            network.process(network.id, 0)
+            network.redraw()
+        }
         background.remove()
+        callback()
     })
     buttonBar.appendChild(submit)
 

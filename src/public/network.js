@@ -1,5 +1,5 @@
 class NodeNetwork {
-    constructor(vis, id, behaviors = null, skill = null) {
+    constructor(vis, id = null, behaviors = null, skill = null) {
         this.vis = vis
         this.id = id
         this.selectedBehaviorId
@@ -15,7 +15,7 @@ class NodeNetwork {
         this.skill
         this.errors
 
-        if(behaviors == null) {
+        if(behaviors == null && id != null) {
             fetch(`https://explorer.lu/api/v0/rev/behaviors/${this.id}`, {
                 headers: {
                     "Authorization": MakeAuth('lu', 'explorer')
@@ -27,12 +27,15 @@ class NodeNetwork {
                 this.process(this.id, 0)
                 this.redraw()
             })
-        } else {
+        } else if(behaviors != null && id != null) {
             this.behaviors = behaviors
             this.skill = skill
 
             this.nodes.push({ id: this.id, label: String(this.id), level: 0 })
             this.process(this.id, 0)
+            this.redraw()
+        } else {
+            this.behaviors = {}
             this.redraw()
         }
     }
