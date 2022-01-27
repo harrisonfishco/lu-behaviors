@@ -433,9 +433,16 @@ class NodeNetwork {
         createAddNode(data, callback, network)
     }
 
-    convertSQLite(edgeStart, nodeStart) {
-        console.log(this.edges[0])
-        console.log(this.nodes[0])
+    convertSQLite() {
+        var sqliteString = ""
+        for(var i in this.behaviors) {
+            sqliteString += `INSERT INTO OR IGNORE BehaviorTemplate (behaviorID, templateID, effectID, effectHandle) VALUES (${i}, ${this.behaviors[i].templateID}, ${this.behaviors[i].effectID}, ${this.behaviors[i].effectHandle});\n`
+            for(var j in this.behaviors[i].parameters) {
+                sqliteString += `INSERT INTO OR IGNORE BehaviorParameter (behaviorID, parameterID, value) VALUES (${i}, ${j}, ${this.behaviors[i].parameters[j]});`
+            }
+            sqliteString += "\n\n"
+        }
+        return sqliteString
     }
 }
 
