@@ -436,12 +436,15 @@ class NodeNetwork {
     convertSQLite() {
         var sqliteString = ""
         for(var i in this.behaviors) {
-            sqliteString += `INSERT INTO OR IGNORE BehaviorTemplate (behaviorID, templateID, effectID, effectHandle) VALUES (${i}, ${this.behaviors[i].templateID}, ${this.behaviors[i].effectID}, ${this.behaviors[i].effectHandle});\n`
+            sqliteString += `-- ${BEHAVIORS[this.behaviors[i].templateID]}: ${i}\nINSERT INTO BehaviorTemplate (behaviorID, templateID, effectID, effectHandle) VALUES (${i}, ${this.behaviors[i].templateID}, ${this.behaviors[i].effectID}, NULL);\n`
             for(var j in this.behaviors[i].parameters) {
-                sqliteString += `INSERT INTO OR IGNORE BehaviorParameter (behaviorID, parameterID, value) VALUES (${i}, ${j}, ${this.behaviors[i].parameters[j]});`
+                sqliteString += `INSERT INTO BehaviorParameter (behaviorID, parameterID, value) VALUES (${i}, '${j}', ${this.behaviors[i].parameters[j]});\n`
             }
             sqliteString += "\n\n"
         }
+        const w = window.open('about:blank', 'SQLite Injection')
+        w.document.write("<pre>" + sqliteString + "</pre>")
+        console.log(w)
         return sqliteString
     }
 }
