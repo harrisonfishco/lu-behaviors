@@ -2,7 +2,7 @@ const createEditNode = (data, callback, network) => {
     if(network.behaviors[data.id] == undefined) {
         callback()
         //background.remove()
-        createAddNode(data, callback, network)
+        createAddNode(data, callback, network, data.id)
         return
     }
     const background = document.createElement('div')

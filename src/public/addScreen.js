@@ -1,4 +1,4 @@
-const createAddNode = (data, callback, network) => {
+const createAddNode = (data, callback, network, id = null) => {
     const background = document.createElement('div')
     background.classList.add('edit-node-background')
     document.body.appendChild(background)
@@ -35,7 +35,7 @@ const createAddNode = (data, callback, network) => {
     const idHolderValue = document.createElement('input')
     idHolderValue.classList.add('edit-node-id-value')
     idHolderValue.id = 'id'
-    idHolderValue.value = 0
+    idHolderValue.value = (id == null) ? 0 : id
     idHolder.appendChild(idHolderName)
     idHolder.appendChild(idHolderValue)
     infoBody.appendChild(idHolder)
@@ -121,8 +121,13 @@ const createAddNode = (data, callback, network) => {
         this.network.behaviors[bID] = behaviorData
 
         console.log(network)
-        this.network.nodes.push({id: bID, label: String(bID), level: 0})
-        this.network.process(bID, 0)
+        if(this.network.nodes.length == 0)
+            this.network.nodes.push({id: bID, label: String(bID), level: 0})
+        else
+            this.network.nodes = [this.network.nodes[0]]
+        this.network.edges = []
+        this.network.processed = new Set()
+        this.network.process(this.network.nodes[0].id)
         this.network.redraw()
         background.remove()
         callback()
