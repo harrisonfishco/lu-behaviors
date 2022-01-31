@@ -150,6 +150,10 @@ class NodeNetwork {
           }
           else if (behavior.templateID == 5) {
             node.label = "Heal";
+            //MODIFIED
+            node.shape = 'image';
+            node.image = "/lu-res/textures/ui/inventory/skills/skills_healing.png";
+            //END MOD
           }
           else if (behavior.templateID == 6) {
             node.label = "Movement\nSwitch";
