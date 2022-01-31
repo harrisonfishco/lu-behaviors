@@ -131,6 +131,8 @@ const createAddNode = (data, callback, network, id = null) => {
         this.network.redraw()
         background.remove()
         callback()
+        this.network.network.manipulation.options.addNode = false
+        this.network.network.manipulation.manipulationDiv.childNodes[0].remove()
     })
     buttonBar.appendChild(submit)
 
