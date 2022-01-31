@@ -419,7 +419,10 @@ class NodeNetwork {
                 enabled: true,
                 initiallyActive: true,
                 editNode: this.editNode,
-                addNode: this.addNode
+                addNode: this.addNode,
+                editEdge: false,
+                deleteEdge: false,
+                addEdge: false
             }
         }
         this.network = new this.vis.Network(this.container, data, options)
