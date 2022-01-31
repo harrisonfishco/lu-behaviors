@@ -152,15 +152,17 @@ const createEditNode = (data, callback, network) => {
     const submit = document.createElement('button')
     submit.innerText = "Edit"
     submit.addEventListener('click', e => {
+        const bID = parseInt(idHolderValue.value)
+        const tID = parseInt(typeHolderValue.value)
+
+        var p = BEHAVIOR_PARAMETERS[tID]
+
+        for(var i = 0; i < paramBody.childNodes.length; ++i)
+            p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
+
         if(cvalue != network.behaviors[data.id].templateID) {
-            const bID = parseInt(idHolderValue.value)
-            const tID = parseInt(typeHolderValue.value)
-
-            var p = BEHAVIOR_PARAMETERS[tID]
-
             console.log(`Editing behavior ${bID} using templateID ${tID}`)
-            for(var i = 0; i < paramBody.childNodes.length; ++i)
-                p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
+            
             
             if(bID != data.id) {
                 network.behaviors[bID] = network.behaviors[data.id]
@@ -171,9 +173,24 @@ const createEditNode = (data, callback, network) => {
             console.log(p)
             network.behaviors[bID].templateID = tID
             network.behaviors[bID].parameters = p
-            network.process(network.id, 0)
-            network.redraw()
+            // network.process(network.id, 0)
+            // network.redraw()
+        } else {
+            if(bID != data.id) {
+                network.behaviors[bID] = network.behaviors[data.id]
+                network.behaviors[bID].behaviorID = bID
+                network.behaviors[data.id] = undefined
+            } else {
+                network.behaviors[bID].parameters = p
+            }
+
         }
+        network.nodes = [network.nodes[0]]
+        network.edges = []
+        network.processed = new Set()
+        console.log(network.nodes[0])
+        network.process(network.nodes[0].id, 0)
+        network.redraw()
         background.remove()
         callback()
     })
