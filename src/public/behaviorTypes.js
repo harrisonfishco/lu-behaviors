@@ -74,6 +74,31 @@ const getBehaviorId = name => {
     }
 }
 
+const isOptional = parameter => {
+    const optionals = [
+        "action",
+        "on_fail_armor",
+        "on_success",
+        "miss action",
+        "behavior 3",
+        "behavior 4",
+        "double_jump_action",
+        "falling_action",
+        "ground_action",
+        "jetpack_action",
+        "jump_action",
+        "action_failed",
+        "break_action",
+        "hit_action",
+        "timeout_action"
+    ]
+
+    for(var i = 0; i < optionals.length; ++i)
+        if(parameter == optionals[i])
+            return true
+    return false
+}
+
 const BEHAVIOR_PARAMETERS = [
     {}, // NULL
     {    // Basic Attack
