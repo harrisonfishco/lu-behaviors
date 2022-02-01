@@ -195,6 +195,8 @@ const createEditNode = (data, callback, network) => {
         network.redraw()
         background.remove()
         callback()
+        this.network.network.manipulation.options.addNode = false
+        this.network.network.manipulation.manipulationDiv.childNodes[0].remove()
     })
     buttonBar.appendChild(submit)
 
