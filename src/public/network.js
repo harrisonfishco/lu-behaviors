@@ -430,6 +430,20 @@ class NodeNetwork {
             }
         }
         this.network = new this.vis.Network(this.container, data, options)
+        const cSQLite = document.createElement('button')
+        cSQLite.classList.add('vis-button')
+        cSQLite.classList.add('vis-convert')
+
+        const cSQLiteLabel = document.createElement('div')
+        cSQLiteLabel.classList.add('vis-label')
+        cSQLiteLabel.innerText = "Convert SQLite"
+
+        cSQLite.appendChild(cSQLiteLabel)
+        this.container.childNodes[0].appendChild(cSQLite)
+
+        cSQLite.addEventListener('click', e => {
+            this.convertSQLite()
+        })
     }
 
     editNode(data, callback) {

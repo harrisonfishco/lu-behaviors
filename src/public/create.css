@@ -72,3 +72,27 @@ body {
 .edit-node-bar > button:hover, .edit-node-bar > button:active {
     background-color: #D14600;
 }
+
+.vis-button.vis-convert {
+    top: 4px;
+    right: 30px;
+    position: absolute;
+    font-family: verdana;
+    font-size: 12px;
+    border: none;
+    box-sizing: content-box;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    /* padding: 0 8px; */
+}
+
+.vis-button.vis-convert > .vis-label {
+    margin: 0 0 0 23px;
+    line-height: 25px;
+}
