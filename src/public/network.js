@@ -115,7 +115,7 @@ class NodeNetwork {
     children(id, behavior, level) {
         let node = this.findNode(id)
         if(!behavior) {
-            node.label = "NULL"
+            node.label = `${id}\nNULL`
             //this.errors.push(id)
             return
         }
