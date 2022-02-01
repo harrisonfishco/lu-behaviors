@@ -1,3 +1,5 @@
 # lu-behaviors
 ## Install
-```npm install```
+```shell
+npm install
+```
