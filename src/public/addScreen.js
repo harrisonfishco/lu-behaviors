@@ -104,11 +104,15 @@ const createAddNode = (data, callback, network, id = null) => {
         const bID = parseInt(idHolderValue.value)
         const tID = parseInt(typeHolderValue.value)
 
-        var p = BEHAVIOR_PARAMETERS[tID]
+        var p = {}
 
         console.log(`Creating behavior ${bID} using templateID ${tID}`)
-        for(var i = 0; i < paramBody.childNodes.length; ++i)
-            p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
+        for(var i = 0; i < paramBody.childNodes.length; ++i) {
+            if(!(isOptional(paramBody.childNodes[i].childNodes[0].innerText) && parseInt(paramBody.childNodes[i].childNodes[1].value) == 0)) { 
+                p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
+                console.log(`${p[paramBody.childNodes[i].childNodes[0].innerText]} = ${paramBody.childNodes[i].childNodes[1].value}`)
+            }
+        }
 
         const behaviorData = {
             behaviorID: bID,
