@@ -455,14 +455,7 @@ class NodeNetwork {
     }
 
     convertSQLite() {
-        var sqliteString = ""
-        for(var i in this.behaviors) {
-            sqliteString += `-- ${BEHAVIORS[this.behaviors[i].templateID]}: ${i}\nINSERT INTO BehaviorTemplate (behaviorID, templateID, effectID, effectHandle) VALUES (${i}, ${this.behaviors[i].templateID}, ${this.behaviors[i].effectID}, NULL);\n`
-            for(var j in this.behaviors[i].parameters) {
-                sqliteString += `INSERT INTO BehaviorParameter (behaviorID, parameterID, value) VALUES (${i}, '${j}', ${this.behaviors[i].parameters[j]});\n`
-            }
-            sqliteString += "\n\n"
-        }
+        
 
         const background = document.createElement('div')
         background.classList.add('edit-node-background')
@@ -497,15 +490,29 @@ class NodeNetwork {
         infoDiv.appendChild(infoBody)
         card.appendChild(infoDiv)
 
+        const boh = document.createElement('div')
+        boh.classList.add('export-option-holder')
+        const bol = document.createElement('span')
+        bol.classList.add('export-option-label')
+        bol.innerText = "Behavior ID Offset"
+        const boc = document.createElement('input')
+        boc.classList.add('export-option-checkbox')
+        boc.setAttribute('type', 'checkbox')
+        const boi = document.createElement('input')
+        boi.setAttribute('value', 42451)
+        boi.classList.add('export-option-input')
+        boh.appendChild(bol)
+        boh.appendChild(boc)
+        boh.appendChild(boi)
+        infoBody.appendChild(boh)
+
         const newWin = document.createElement('button')
         newWin.classList.add('export-button')
         newWin.innerText = "Open in new Window"
 
         newWin.addEventListener('click', e => {
             const w = window.open('about:blank', 'SQLite Injection')
-            w.document.write("<pre>" + sqliteString + "</pre>")
-            console.log(w)
-            return sqliteString
+            w.document.write("<pre>" + (boc.checked ? this.convertToString(parseInt(boi.value)) : this.convertToString()) + "</pre>")
         })
 
         infoBody.appendChild(newWin)
@@ -517,12 +524,25 @@ class NodeNetwork {
         download.addEventListener('click', e => {
             const l = document.createElement('a')
             l.setAttribute('download', 'LU-Behaviors.sql')
-            l.setAttribute('href', 'data:application/sql;charset=utf-8,' + encodeURIComponent(sqliteString))
+            l.setAttribute('href', 'data:application/sql;charset=utf-8,' + encodeURIComponent(boc.checked ? this.convertToString(parseInt(boi.value)) : this.convertToString()))
             l.click()
             background.remove()
         })
 
         infoBody.appendChild(download)
+    }
+
+    convertToString(offset = 0) {
+        var sqliteString = ""
+        for(var i in this.behaviors) {
+            i = parseInt(i)
+            sqliteString += `-- ${BEHAVIORS[this.behaviors[i].templateID]}: ${i + offset}\nINSERT INTO BehaviorTemplate (behaviorID, templateID, effectID, effectHandle) VALUES (${i + offset}, ${this.behaviors[i].templateID}, ${this.behaviors[i].effectID}, NULL);\n`
+            for(var j in this.behaviors[i].parameters) {
+                sqliteString += `INSERT INTO BehaviorParameter (behaviorID, parameterID, value) VALUES (${i + offset}, '${j}', ${this.behaviors[i].parameters[j]});\n`
+            }
+            sqliteString += "\n\n"
+        }
+        return sqliteString
     }
 }
 

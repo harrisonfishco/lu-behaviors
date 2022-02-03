@@ -89,10 +89,13 @@ body {
     height: 24px;
     margin-left: 10px;
     cursor: pointer;
-    /* padding: 0 8px; */
 }
 
 .vis-button.vis-convert > .vis-label {
     margin: 0 0 0 23px;
     line-height: 25px;
+}
+
+.export-option-holder > .export-option-checkbox:not(:checked) + .export-option-input {
+    display: none;
 }
