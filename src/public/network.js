@@ -463,10 +463,66 @@ class NodeNetwork {
             }
             sqliteString += "\n\n"
         }
-        const w = window.open('about:blank', 'SQLite Injection')
-        w.document.write("<pre>" + sqliteString + "</pre>")
-        console.log(w)
-        return sqliteString
+
+        const background = document.createElement('div')
+        background.classList.add('edit-node-background')
+
+        background.addEventListener('click', e => {
+            if(e.target === background) {
+                background.remove()
+            }
+        })
+
+        const card = document.createElement('div')
+        card.classList.add('edit-node-card')
+        background.appendChild(card)
+
+        document.body.appendChild(background)
+
+        const infoDiv = document.createElement('div')
+        infoDiv.classList.add('edit-node-info-div')
+
+        const infoTitleDiv = document.createElement('div')
+        infoTitleDiv.classList.add('edit-node-info-title-div')
+
+        const infoTitle = document.createElement('h2')
+        infoTitle.classList.add('edit-node-info-title')
+        infoTitle.innerText = 'Options'
+
+        const infoBody = document.createElement('div')
+        infoBody.classList.add('edit-node-info-body')
+
+        infoDiv.appendChild(infoTitleDiv)
+        infoTitleDiv.appendChild(infoTitle)
+        infoDiv.appendChild(infoBody)
+        card.appendChild(infoDiv)
+
+        const newWin = document.createElement('button')
+        newWin.classList.add('export-button')
+        newWin.innerText = "Open in new Window"
+
+        newWin.addEventListener('click', e => {
+            const w = window.open('about:blank', 'SQLite Injection')
+            w.document.write("<pre>" + sqliteString + "</pre>")
+            console.log(w)
+            return sqliteString
+        })
+
+        infoBody.appendChild(newWin)
+
+        const download = document.createElement('button')
+        download.classList.add('export-button')
+        download.innerText = "Download"
+
+        download.addEventListener('click', e => {
+            const l = document.createElement('a')
+            l.setAttribute('download', 'LU-Behaviors.sql')
+            l.setAttribute('href', 'data:application/sql;charset=utf-8,' + encodeURIComponent(sqliteString))
+            l.click()
+            background.remove()
+        })
+
+        infoBody.appendChild(download)
     }
 }
 
