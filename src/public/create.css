@@ -31,11 +31,16 @@ body {
 
 .edit-node-background > .edit-node-card {
     width: 750px;
+    margin-left: calc(-750px / 2);
     height: 500px;
+    margin-top: -250px;
     background-color: #313131;
-    margin: calc((50% - 250px) / 4) auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     padding: 16px;
     border-radius: 10px;
+    overflow-y: auto;
 }
 
 .edit-node-param, .edit-node-info, .edit-node-type, .edit-node-id {
@@ -56,6 +61,11 @@ body {
     float: right;
     background-color: #656565;
     color: #fff;
+}
+
+.edit-node-bar {
+    height: 31px;
+    padding-bottom: 8px;
 }
 
 .edit-node-bar > button {
