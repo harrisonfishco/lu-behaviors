@@ -128,22 +128,21 @@ class NodeNetwork {
             this.add_child(id, behavior, level, 'on_success', 'success');
             this.add_child(id, behavior, level, 'on_fail_armor', 'fail armor');
             this.add_child(id, behavior, level, 'on_fail_blocked', 'fail blocked');
-          }
-          else if (behavior.templateID == 2) {
+        }
+        else if (behavior.templateID == 2) {
             node.label = "TacArc";
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/skills_blow_dart.png";
             this.add_child(id, behavior, level, 'action', '');
             this.add_child(id, behavior, level, 'blocked action', 'blocked');
-          }
-          else if (behavior.templateID == 3) {
+        }
+        else if (behavior.templateID == 3) {
             node.label = "And";
             node.shape = 'circle';
             for (let key in behavior.parameters) {
               this.add_child(id, behavior, level, key, '');
-            }
-          }
-          else if (behavior.templateID == 4) {
+            }  
+        }  else if (behavior.templateID == 4) {
             node.label = "Projectile Attack";
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/skills_flaming_arrow.png";
@@ -174,6 +173,23 @@ class NodeNetwork {
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/disco_ball.png";
           }
+          //MODIFIED START//
+          else if(behavior.templateID == 9) {
+              node.label = "Immunity";
+              node.shape = 'image'
+              node.image = "/lu-res/textures/ui/inventory/skills/heart_shield.png"
+          }
+          else if(behavior.templateID == 10) {
+              node.label = "Damage\nBuff"
+              node.shape = 'image'
+              node.image = "/lu-res/textures/ui/inventory/skills/knight_challenge.png"
+          } 
+          else if(behavior.templateID == 11) {
+              node.label = "Damage\nAbsorbtion"
+              node.shape = 'image'
+              node.image = '/lu-res/textures/ui/inventory/skills/cure_maelstrom.png'
+          }
+          //MODIFIED END
           else if (behavior.templateID == 12) {
             node.label = "OverTime";
             node.shape = 'image';
@@ -182,6 +198,10 @@ class NodeNetwork {
           }
           else if (behavior.templateID == 13) {
             node.label = "Imagination";
+            //MODIFIED START
+            node.shape = 'image'
+            node.image = "/lu-res/textures/ui/inventory/skills/imagination_buff.png"
+            //MODIFIED END
           }
           else if (behavior.templateID == 14) {
             node.label = "TargetCaster";
@@ -209,23 +229,55 @@ class NodeNetwork {
             node.image = "/lu-res/textures/ui/inventory/skills/turtle_rush.png";
             this.add_child(id, behavior, level, 'action', '');
           }
+          //MODIFIED START
+          else if(behavior.templateID == 19) {
+              node.label = 'Car Boost'
+          }
+          else if(behavior.templateID == 20) {
+              node.label = 'Fall Speed'
+              node.shape = 'image'
+              node.image = '/lu-res/textures/ui/inventory/skills/darkness_falls.png'
+          }
+          else if(behavior.templateID == 21) {
+              node.label = "Shield"
+              node.shape = "image"
+              node.image = '/lu-res/textures/ui/inventory/skills/for_the_shogun.png'
+          }
+          //MODIFIED END
           else if (behavior.templateID == 22) {
             node.label = "Repair Armor";
           }
           else if (behavior.templateID == 23) {
             node.label = "Speed";
           }
+          //MODIFIED START
+          else if(behavior.templateID == 24) {
+              node.label = "Dark\nInspiration"
+              node.shape = "image"
+              node.image = '/lu-res/textures/ui/inventory/skills/skills_dark_inspiration.png'
+          }
+          //MODIFIED END
           else if (behavior.templateID == 25) {
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/skills_lucky.png";
             node.label = "LootBuff";
           }
+          //MODIFIED START
+          else if(behavior.templateID == 26) {
+              node.label = "Venture\nVision"
+          }
+          //MODIFIED END
           else if (behavior.templateID == 27) // e.g. 4417
           {
             node.label = "Spawn";
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/crabby.png";
           }
+          //MODIFIED START
+          else if(behavior.templateID == 28) {
+              node.label = "Lay Brick"
+          }
+          //MODIFIED END
           else if (behavior.templateID == 29) {
             node.label = "Switch";
             this.add_child(id, behavior, level, 'action_true', 'true');
@@ -234,13 +286,34 @@ class NodeNetwork {
           else if (behavior.templateID == 30) {
             node.label = "Buff";
           }
+          //MODIFIED START
+          else if(behavior.templateID == 31) {
+              node.label = 'Jetpack'
+          }
+          //MODIFIED END
           else if (behavior.templateID == 32) {
             node.label = "Skill\nEvent";
           }
+          //MODIFIED START
+          else if(behavior.templateID == 33) {
+              node.label = "Consume\nItem"
+              node.shape = 'image'
+              node.image = '/lu-res/textures/ui/inventory/skills/banana_rang.png'
+          }
+          //MODIFIED END
           else if (behavior.templateID == 34) {
             node.label = "Skill Cast\nFailed";
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/skills_marks_the_spot.png";
+          }
+          //MODIFIED START
+          else if(behavior.templateID == 35) {
+              node.label = "Imitation\nStink"
+              node.shape = 'image'
+              node.image = "/lu-res/textures/ui/inventory/skills/stink.png"
+          }
+          else if(behavior.templateID == 36) {
+              node.label = "Candle Idle\nFlags"
           }
           else if (behavior.templateID == 37) {
             node.label = "ApplyBuff";
@@ -299,6 +372,17 @@ class NodeNetwork {
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/spark_thrower.png";
           }
+          //MODIFIED START
+          else if(behavior.templateID == 48) {
+              node.label = "Camera"
+          }
+          else if(behavior.templateID == 49) {
+              node.label = "Remove Buff"
+          }
+          else if(behavior.templateID == 50) {
+              node.label = "Grab"
+          }
+          //MODIFIED END
           else if (behavior.templateID == 51) {
             node.label = "ModularBuild";
             node.shape = 'image';
@@ -332,11 +416,39 @@ class NodeNetwork {
             this.add_child(id, behavior, level, 'hit_action_enemy', 'hit enemy');
             this.add_child(id, behavior, level, 'timeout_action', 'timeout');
         }
+        //MODIFIED START
+        else if(behavior.templateID == 57) {
+            node.label = "Spawn Quick\nBuild"
+        }
+        //MODIFIED END
           else if (behavior.templateID == 58) {
             node.label = "PullToPoint";
             node.shape = 'image';
             node.image = "/lu-res/textures/ui/inventory/skills/skills_snap_trap.png";
         }
+        //MODIFIED START
+        else if(behavior.templateID == 59) {
+            node.label = "Property\nRotate"
+        }
+        else if(behavior.templateID == 60) {
+            node.label = "Damage\nReduction"
+        }
+        else if(behavior.templateID == 61) {
+            node.label = "Property\nTeleport"
+        }
+        else if(behavior.templateID == 62) {
+            node.label = "Clear Target"
+        }
+        else if(behavior.templateID == 63) {
+            node.label = "Take Picture"
+        }
+        else if(behavior.templateID == 64) {
+            node.label = "Mount"
+        }
+        else if(behavior.templateID == 65) {
+            node.label = "Skill Set"
+        }
+        //MODIFIED END
     }
 
     redraw() {
