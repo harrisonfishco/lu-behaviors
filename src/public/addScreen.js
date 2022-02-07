@@ -106,11 +106,9 @@ const createAddNode = (data, callback, network, id = null) => {
 
         var p = {}
 
-        console.log(`Creating behavior ${bID} using templateID ${tID}`)
         for(var i = 0; i < paramBody.childNodes.length; ++i) {
             if(!(isOptional(paramBody.childNodes[i].childNodes[0].innerText) && parseInt(paramBody.childNodes[i].childNodes[1].value) == 0)) { 
                 p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
-                console.log(`${p[paramBody.childNodes[i].childNodes[0].innerText]} = ${paramBody.childNodes[i].childNodes[1].value}`)
             }
         }
 
@@ -124,7 +122,6 @@ const createAddNode = (data, callback, network, id = null) => {
 
         this.network.behaviors[bID] = behaviorData
 
-        console.log(network)
         if(this.network.nodes.length == 0)
             this.network.nodes.push({id: bID, label: String(bID), level: 0})
         else

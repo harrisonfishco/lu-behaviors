@@ -68,7 +68,6 @@ const createEditNode = (data, callback, network) => {
             typeHolderValue.appendChild(op)
         }
     }
-    console.log(network.behaviors[data.id])
     if(network.behaviors[data.id] != undefined) {
         typeHolderValue.value = network.behaviors[data.id].templateID
     }
@@ -163,7 +162,6 @@ const createEditNode = (data, callback, network) => {
                 p[paramBody.childNodes[i].childNodes[0].innerText] = paramBody.childNodes[i].childNodes[1].value
 
         if(cvalue != network.behaviors[data.id].templateID) {
-            console.log(`Editing behavior ${bID} using templateID ${tID}`)
             
             
             if(bID != data.id) {
@@ -172,7 +170,6 @@ const createEditNode = (data, callback, network) => {
                 network.behaviors[data.id] = undefined
             }
 
-            console.log(p)
             network.behaviors[bID].templateID = tID
             network.behaviors[bID].parameters = p
             // network.process(network.id, 0)
@@ -190,7 +187,6 @@ const createEditNode = (data, callback, network) => {
         network.nodes = [network.nodes[0]]
         network.edges = []
         network.processed = new Set()
-        console.log(network.nodes[0])
         network.process(network.nodes[0].id, 0)
         network.redraw()
         background.remove()
