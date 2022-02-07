@@ -155,8 +155,8 @@ const createAddNode = (data, callback, network, id = null) => {
         if(cvalue != newValue) {
             cvalue = newValue
 
-            for(var i = 0; i < paramBody.childNodes.length; ++i)
-                paramBody.childNodes[i].remove()
+            while(paramBody.firstChild)
+                paramBody.removeChild(paramBody.firstChild)
 
             for(var i in BEHAVIOR_PARAMETERS[newValue]) {
                 params.push([i, BEHAVIOR_PARAMETERS[newValue][i]])
