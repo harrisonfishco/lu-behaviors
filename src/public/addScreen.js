@@ -93,6 +93,39 @@ const createAddNode = (data, callback, network, id = null) => {
     paramTitleDiv.appendChild(paramTitle)
     paramDiv.appendChild(paramBody)
     card.appendChild(paramDiv)
+
+    const effectDiv = document.createElement('div')
+    effectDiv.classList.add('edit-node-effect-div')
+
+    const effectTitleDiv = document.createElement('div')
+    effectTitleDiv.classList.add('edit-node-effect-title-div')
+
+    const effectTitle = document.createElement('h2')
+    effectTitle.classList.add('edit-node-effect-title')
+    effectTitle.innerText = "Effect"
+
+    const effectBody = document.createElement('div')
+    effectBody.classList.add('edit-node-effect-body')
+
+    const effectidDiv = document.createElement('div')
+    effectidDiv.classList.add('edit-node-effectID-div')
+
+    const effectIDLabel = document.createElement('span')
+    effectIDLabel.classList.add('edit-node-effectID-label')
+    effectIDLabel.innerText = "EffectID"
+
+    const effectIDInput = document.createElement('input')
+    effectIDInput.classList.add('edit-node-effectID-input')
+    effectIDInput.value = 0
+
+    effectidDiv.appendChild(effectIDLabel)
+    effectidDiv.appendChild(effectIDInput)
+    effectBody.appendChild(effectidDiv)
+
+    effectDiv.appendChild(effectTitleDiv)
+    effectTitleDiv.appendChild(effectTitle)
+    effectDiv.appendChild(effectBody)
+    card.appendChild(effectDiv)
     
     const buttonBar = document.createElement('div')
     buttonBar.classList.add('edit-node-bar')
@@ -115,7 +148,7 @@ const createAddNode = (data, callback, network, id = null) => {
         const behaviorData = {
             behaviorID: bID,
             effectHandle: null,
-            effectID: 0,
+            effectID: parseInt(effectIDInput.value),
             parameters: p,
             templateID: tID
         }

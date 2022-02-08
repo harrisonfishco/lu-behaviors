@@ -114,6 +114,39 @@ const createEditNode = (data, callback, network) => {
     paramTitleDiv.appendChild(paramTitle)
     paramDiv.appendChild(paramBody)
     card.appendChild(paramDiv)
+
+    const effectDiv = document.createElement('div')
+    effectDiv.classList.add('edit-node-effect-div')
+
+    const effectTitleDiv = document.createElement('div')
+    effectTitleDiv.classList.add('edit-node-effect-title-div')
+
+    const effectTitle = document.createElement('h2')
+    effectTitle.classList.add('edit-node-effect-title')
+    effectTitle.innerText = "Effect"
+
+    const effectBody = document.createElement('div')
+    effectBody.classList.add('edit-node-effect-body')
+
+    const effectidDiv = document.createElement('div')
+    effectidDiv.classList.add('edit-node-effectID-div')
+
+    const effectIDLabel = document.createElement('span')
+    effectIDLabel.classList.add('edit-node-effectID-label')
+    effectIDLabel.innerText = "EffectID"
+
+    const effectIDInput = document.createElement('input')
+    effectIDInput.classList.add('edit-node-effectID-input')
+    effectIDInput.value = network.behaviors[data.id].effectID
+
+    effectidDiv.appendChild(effectIDLabel)
+    effectidDiv.appendChild(effectIDInput)
+    effectBody.appendChild(effectidDiv)
+
+    effectDiv.appendChild(effectTitleDiv)
+    effectTitleDiv.appendChild(effectTitle)
+    effectDiv.appendChild(effectBody)
+    card.appendChild(effectDiv)
     
     const buttonBar = document.createElement('div')
     buttonBar.classList.add('edit-node-bar')
@@ -153,6 +186,7 @@ const createEditNode = (data, callback, network) => {
     submit.addEventListener('click', e => {
         const bID = parseInt(idHolderValue.value)
         const tID = parseInt(typeHolderValue.value)
+        const eID = parseInt(effectIDInput.value)
 
         //var p = BEHAVIOR_PARAMETERS[tID]
         var p = {}
@@ -184,6 +218,7 @@ const createEditNode = (data, callback, network) => {
             }
 
         }
+        network.behaviors[bID].effectID = eID
         network.nodes = [network.nodes[0]]
         network.edges = []
         network.processed = new Set()
