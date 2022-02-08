@@ -68,7 +68,7 @@ body {
     padding-bottom: 8px;
 }
 
-.edit-node-bar > button {
+.edit-node-bar > button, .export-button {
     float: right;
     border: none;
     background-color: #6161FF;
@@ -79,7 +79,7 @@ body {
     cursor: pointer;
 }
 
-.edit-node-bar > button:hover, .edit-node-bar > button:active {
+.edit-node-bar > button:hover, .edit-node-bar > button:active, .export-button:hover, .export-button:active {
     background-color: #D14600;
 }
 
@@ -108,4 +108,14 @@ body {
 
 .export-option-holder > .export-option-checkbox:not(:checked) + .export-option-input {
     display: none;
+}
+
+.export-option-input {
+    text-align: right;
+    width: 50px;
+    border: none;
+    border-radius: 2px;
+    background-color: #656565;
+    color: #fff;
+    margin-left: 20px;
 }
