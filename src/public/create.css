@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 
-.edit-node-background {
+.card-background {
     position: fixed;
     top: 0;
     right: 0;
@@ -29,7 +29,7 @@ body {
     z-index: 1000;
 }
 
-.edit-node-background > .edit-node-card {
+.card-background > .card {
     width: 750px;
     margin-left: calc(-750px / 2);
     height: 500px;
@@ -43,11 +43,11 @@ body {
     overflow-y: auto;
 }
 
-.edit-node-param, .edit-node-info, .edit-node-type, .edit-node-id, .edit-node-effectID-div, .card-section-field-holder {
+.edit-node-type, .card-section-field-holder {
     padding: 8px 0px;
 }
 
-.edit-node-param-value, .edit-node-id-value, .edit-node-effectID-input, .card-section-field-input {
+.card-section-field-input {
     float: right;
     text-align: right;
     width: 50px;

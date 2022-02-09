@@ -1,6 +1,6 @@
 const createCard = (callback = null) => {
     const background = document.createElement('div')
-    background.classList.add('edit-node-background')
+    background.classList.add('card-background')
     document.body.appendChild(background)
 
     background.addEventListener('click', e => {
@@ -12,7 +12,7 @@ const createCard = (callback = null) => {
     })
         
     const card = document.createElement('div')
-    card.classList.add('edit-node-card')
+    card.classList.add('card')
     background.appendChild(card)
     return [background, card]
 }
