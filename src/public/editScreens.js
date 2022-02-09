@@ -1,55 +1,17 @@
 const createEditNode = (data, callback, network) => {
     if(network.behaviors[data.id] == undefined) {
         callback()
-        //background.remove()
         createAddNode(data, callback, network, data.id)
         return
     }
-    const background = document.createElement('div')
-    background.classList.add('edit-node-background')
-    document.body.appendChild(background)
 
-    background.addEventListener('click', e => {
-        if(e.target === background) {
-            background.remove()
-            callback()
-        }
-    })
-        
-    const card = document.createElement('div')
-    card.classList.add('edit-node-card')
-    background.appendChild(card)
+    var background = createCard(callback)
+    const card = background[1]
+    background = background[0]
 
-    const infoDiv = document.createElement('div')
-    infoDiv.classList.add('edit-node-info-div')
+    const infoBody = createSection("Information", card)
 
-    const infoTitleDiv = document.createElement('div')
-    infoTitleDiv.classList.add('edit-node-info-title-div')
-
-    const infoTitle = document.createElement('h2')
-    infoTitle.classList.add('edit-node-info-title')
-    infoTitle.innerText = 'Information'
-
-    const infoBody = document.createElement('div')
-    infoBody.classList.add('edit-node-info-body')
-
-    const idHolder = document.createElement('div')
-    idHolder.classList.add('edit-node-id')
-    const idHolderName = document.createElement('span')
-    idHolderName.classList.add('edit-node-id-name')
-    idHolderName.innerText = "BehaviorID"
-    const idHolderValue = document.createElement('input')
-    idHolderValue.classList.add('edit-node-id-value')
-    idHolderValue.id = 'id'
-    idHolderValue.value = data.id
-    idHolder.appendChild(idHolderName)
-    idHolder.appendChild(idHolderValue)
-    infoBody.appendChild(idHolder)
-
-    infoDiv.appendChild(infoTitleDiv)
-    infoTitleDiv.appendChild(infoTitle)
-    infoDiv.appendChild(infoBody)
-    card.appendChild(infoDiv)
+    const idHolderValue = createSectionField("BehaviorID", data.id, infoBody)
 
     const typeHolder = document.createElement('div')
     typeHolder.classList.add('edit-node-type')
@@ -76,77 +38,19 @@ const createEditNode = (data, callback, network) => {
     typeHolder.appendChild(typeHolderValue)
     infoBody.appendChild(typeHolder)
 
-    const paramDiv = document.createElement('div')
-    paramDiv.classList.add('edit-node-param-div')
-    
-    const paramTitleDiv = document.createElement('div')
-    paramTitleDiv.classList.add('edit-node-param-title-div')
-
-    const paramTitle = document.createElement('h2')
-    paramTitle.classList.add('edit-node-param-title')
-    paramTitle.innerText = "Parameters"
-
-    const paramBody = document.createElement('div')
-    paramBody.classList.add('edit-node-param-body')
+    const paramBody = createSection("Parameters", card)
 
     var params = []
 
     if(network.behaviors[data.id] != undefined) {
         for(var i in network.behaviors[data.id].parameters) {
             params.push([i, network.behaviors[data.id].parameters[i]])
-            var paramHolder = document.createElement('div')
-            paramHolder.classList.add('edit-node-param')
-            var paramName = document.createElement('span')
-            paramName.classList.add('edit-node-param-name')
-            paramName.innerText = i
-            var paramValue = document.createElement('input')
-            paramValue.classList.add('edit-node-param-value')
-            paramValue.id = i
-            paramValue.value = network.behaviors[data.id].parameters[i]
-
-            paramHolder.appendChild(paramName)
-            paramHolder.appendChild(paramValue)
-            paramBody.appendChild(paramHolder)
+            createSectionField(i, network.behaviors[data.id].parameters[i], paramBody)
         }
     }
+    const effectBody = createSection("Effect", card)
 
-    paramDiv.appendChild(paramTitleDiv)
-    paramTitleDiv.appendChild(paramTitle)
-    paramDiv.appendChild(paramBody)
-    card.appendChild(paramDiv)
-
-    const effectDiv = document.createElement('div')
-    effectDiv.classList.add('edit-node-effect-div')
-
-    const effectTitleDiv = document.createElement('div')
-    effectTitleDiv.classList.add('edit-node-effect-title-div')
-
-    const effectTitle = document.createElement('h2')
-    effectTitle.classList.add('edit-node-effect-title')
-    effectTitle.innerText = "Effect"
-
-    const effectBody = document.createElement('div')
-    effectBody.classList.add('edit-node-effect-body')
-
-    const effectidDiv = document.createElement('div')
-    effectidDiv.classList.add('edit-node-effectID-div')
-
-    const effectIDLabel = document.createElement('span')
-    effectIDLabel.classList.add('edit-node-effectID-label')
-    effectIDLabel.innerText = "EffectID"
-
-    const effectIDInput = document.createElement('input')
-    effectIDInput.classList.add('edit-node-effectID-input')
-    effectIDInput.value = network.behaviors[data.id].effectID
-
-    effectidDiv.appendChild(effectIDLabel)
-    effectidDiv.appendChild(effectIDInput)
-    effectBody.appendChild(effectidDiv)
-
-    effectDiv.appendChild(effectTitleDiv)
-    effectTitleDiv.appendChild(effectTitle)
-    effectDiv.appendChild(effectBody)
-    card.appendChild(effectDiv)
+    const effectIDInput = createSectionField("EffectID", network.behaviors[data.id].effectID, effectBody)
     
     const buttonBar = document.createElement('div')
     buttonBar.classList.add('edit-node-bar')
@@ -164,19 +68,7 @@ const createEditNode = (data, callback, network) => {
 
             for(var i in BEHAVIOR_PARAMETERS[newValue]) {
                 params.push([i, BEHAVIOR_PARAMETERS[newValue][i]])
-                const paramHolder = document.createElement('div')
-                paramHolder.classList.add('edit-node-param')
-                const paramName = document.createElement('span')
-                paramName.classList.add('edit-node-param-name')
-                paramName.innerText = i
-                const paramValue = document.createElement('input')
-                paramValue.classList.add('edit-node-param-value')
-                paramValue.id = i
-                paramValue.value = BEHAVIOR_PARAMETERS[newValue][i]
-
-                paramHolder.appendChild(paramName)
-                paramHolder.appendChild(paramValue)
-                paramBody.appendChild(paramHolder)
+                createSectionField(i, BEHAVIOR_PARAMETERS[newValue][i], paramBody)
             }
         }
     })
@@ -188,7 +80,6 @@ const createEditNode = (data, callback, network) => {
         const tID = parseInt(typeHolderValue.value)
         const eID = parseInt(effectIDInput.value)
 
-        //var p = BEHAVIOR_PARAMETERS[tID]
         var p = {}
 
         for(var i = 0; i < paramBody.childNodes.length; ++i)
@@ -206,8 +97,6 @@ const createEditNode = (data, callback, network) => {
 
             network.behaviors[bID].templateID = tID
             network.behaviors[bID].parameters = p
-            // network.process(network.id, 0)
-            // network.redraw()
         } else {
             if(bID != data.id) {
                 network.behaviors[bID] = network.behaviors[data.id]

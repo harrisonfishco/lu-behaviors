@@ -567,40 +567,11 @@ class NodeNetwork {
     }
 
     convertSQLite() {
-        
+        var background = createCard()
+        const card = background[1]
+        background = background[0]
 
-        const background = document.createElement('div')
-        background.classList.add('edit-node-background')
-
-        background.addEventListener('click', e => {
-            if(e.target === background) {
-                background.remove()
-            }
-        })
-
-        const card = document.createElement('div')
-        card.classList.add('edit-node-card')
-        background.appendChild(card)
-
-        document.body.appendChild(background)
-
-        const infoDiv = document.createElement('div')
-        infoDiv.classList.add('edit-node-info-div')
-
-        const infoTitleDiv = document.createElement('div')
-        infoTitleDiv.classList.add('edit-node-info-title-div')
-
-        const infoTitle = document.createElement('h2')
-        infoTitle.classList.add('edit-node-info-title')
-        infoTitle.innerText = 'Options'
-
-        const infoBody = document.createElement('div')
-        infoBody.classList.add('edit-node-info-body')
-
-        infoDiv.appendChild(infoTitleDiv)
-        infoTitleDiv.appendChild(infoTitle)
-        infoDiv.appendChild(infoBody)
-        card.appendChild(infoDiv)
+        const infoBody = createSection("Information", card)
 
         const boh = document.createElement('div')
         boh.classList.add('export-option-holder')

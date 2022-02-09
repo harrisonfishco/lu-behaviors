@@ -1,49 +1,11 @@
 const createAddNode = (data, callback, network, id = null) => {
-    const background = document.createElement('div')
-    background.classList.add('edit-node-background')
-    document.body.appendChild(background)
+    var background = createCard()
+    const card = background[1]
+    background = background[0]
 
-    background.addEventListener('click', e => {
-        if(e.target === background) {
-            background.remove()
-            callback()
-        }
-    })
-        
-    const card = document.createElement('div')
-    card.classList.add('edit-node-card')
-    background.appendChild(card)
+    const infoBody = createSection("Information", card)
 
-    const infoDiv = document.createElement('div')
-    infoDiv.classList.add('edit-node-info-div')
-
-    const infoTitleDiv = document.createElement('div')
-    infoTitleDiv.classList.add('edit-node-info-title-div')
-
-    const infoTitle = document.createElement('h2')
-    infoTitle.classList.add('edit-node-info-title')
-    infoTitle.innerText = 'Information'
-
-    const infoBody = document.createElement('div')
-    infoBody.classList.add('edit-node-info-body')
-
-    const idHolder = document.createElement('div')
-    idHolder.classList.add('edit-node-id')
-    const idHolderName = document.createElement('span')
-    idHolderName.classList.add('edit-node-id-name')
-    idHolderName.innerText = "BehaviorID"
-    const idHolderValue = document.createElement('input')
-    idHolderValue.classList.add('edit-node-id-value')
-    idHolderValue.id = 'id'
-    idHolderValue.value = (id == null) ? 0 : id
-    idHolder.appendChild(idHolderName)
-    idHolder.appendChild(idHolderValue)
-    infoBody.appendChild(idHolder)
-
-    infoDiv.appendChild(infoTitleDiv)
-    infoTitleDiv.appendChild(infoTitle)
-    infoDiv.appendChild(infoBody)
-    card.appendChild(infoDiv)
+    const idHolderValue = createSectionField("BehaviorID", (id == null) ? 0 : id, infoBody)
 
     const typeHolder = document.createElement('div')
     typeHolder.classList.add('edit-node-type')
@@ -74,58 +36,13 @@ const createAddNode = (data, callback, network, id = null) => {
     typeHolder.appendChild(typeHolderValue)
     infoBody.appendChild(typeHolder)
 
-    const paramDiv = document.createElement('div')
-    paramDiv.classList.add('edit-node-param-div')
-    
-    const paramTitleDiv = document.createElement('div')
-    paramTitleDiv.classList.add('edit-node-param-title-div')
-
-    const paramTitle = document.createElement('h2')
-    paramTitle.classList.add('edit-node-param-title')
-    paramTitle.innerText = "Parameters"
-
-    const paramBody = document.createElement('div')
-    paramBody.classList.add('edit-node-param-body')
+    const paramBody = createSection("Parameters", card)
 
     var params = []
 
-    paramDiv.appendChild(paramTitleDiv)
-    paramTitleDiv.appendChild(paramTitle)
-    paramDiv.appendChild(paramBody)
-    card.appendChild(paramDiv)
+    const effectBody = createSection("Effect", card)
 
-    const effectDiv = document.createElement('div')
-    effectDiv.classList.add('edit-node-effect-div')
-
-    const effectTitleDiv = document.createElement('div')
-    effectTitleDiv.classList.add('edit-node-effect-title-div')
-
-    const effectTitle = document.createElement('h2')
-    effectTitle.classList.add('edit-node-effect-title')
-    effectTitle.innerText = "Effect"
-
-    const effectBody = document.createElement('div')
-    effectBody.classList.add('edit-node-effect-body')
-
-    const effectidDiv = document.createElement('div')
-    effectidDiv.classList.add('edit-node-effectID-div')
-
-    const effectIDLabel = document.createElement('span')
-    effectIDLabel.classList.add('edit-node-effectID-label')
-    effectIDLabel.innerText = "EffectID"
-
-    const effectIDInput = document.createElement('input')
-    effectIDInput.classList.add('edit-node-effectID-input')
-    effectIDInput.value = 0
-
-    effectidDiv.appendChild(effectIDLabel)
-    effectidDiv.appendChild(effectIDInput)
-    effectBody.appendChild(effectidDiv)
-
-    effectDiv.appendChild(effectTitleDiv)
-    effectTitleDiv.appendChild(effectTitle)
-    effectDiv.appendChild(effectBody)
-    card.appendChild(effectDiv)
+    const effectIDInput = createSectionField("EffectID", 0, effectBody)
     
     const buttonBar = document.createElement('div')
     buttonBar.classList.add('edit-node-bar')
@@ -190,19 +107,7 @@ const createAddNode = (data, callback, network, id = null) => {
 
             for(var i in BEHAVIOR_PARAMETERS[newValue]) {
                 params.push([i, BEHAVIOR_PARAMETERS[newValue][i]])
-                const paramHolder = document.createElement('div')
-                paramHolder.classList.add('edit-node-param')
-                const paramName = document.createElement('span')
-                paramName.classList.add('edit-node-param-name')
-                paramName.innerText = i
-                const paramValue = document.createElement('input')
-                paramValue.classList.add('edit-node-param-value')
-                paramValue.id = i
-                paramValue.value = BEHAVIOR_PARAMETERS[newValue][i]
-
-                paramHolder.appendChild(paramName)
-                paramHolder.appendChild(paramValue)
-                paramBody.appendChild(paramHolder)
+                createSectionField(i, BEHAVIOR_PARAMETERS[newValue][i], paramBody)
             }
         }
     })

@@ -43,11 +43,11 @@ body {
     overflow-y: auto;
 }
 
-.edit-node-param, .edit-node-info, .edit-node-type, .edit-node-id, .edit-node-effectID-div {
+.edit-node-param, .edit-node-info, .edit-node-type, .edit-node-id, .edit-node-effectID-div, .card-section-field-holder {
     padding: 8px 0px;
 }
 
-.edit-node-param-value, .edit-node-id-value, .edit-node-effectID-input {
+.edit-node-param-value, .edit-node-id-value, .edit-node-effectID-input, .card-section-field-input {
     float: right;
     text-align: right;
     width: 50px;
