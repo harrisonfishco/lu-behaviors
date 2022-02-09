@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/harrisonfishco/lu-behaviors#readme",
   "dependencies": {
-    "express": "^4.17.2",
-    "vis-network": "^9.1.0"
+    "express": "^4.17.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
