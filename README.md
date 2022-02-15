@@ -7,5 +7,6 @@ Allows for visual representation of the LEGO<sup>&copy;</sup> Universe Database 
 - Add offset for ids to create unique identifiers
 ## Running
 Either host the `/src` folder or open `/src/index.html` file locally.
+Adding `?id=[BehaviorTemplate ID]` will open an existing graph
 ## Credits
 [Xiphoseer](https://github.com/Xiphoseer)'s [lu-explorer](https://github.com/Xiphoseer/lu-explorer) repo
