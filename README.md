@@ -15,6 +15,6 @@ npm install
 ```shell
 npm run
 ```
-Server should be ran on `localhost:3000` by default
+Server should be ran on `localhost:3000` by default. Adding `/create?id=[BehaviorTemplate ID]` will display existing graph
 ## Credits
 [Xiphoseer](https://github.com/Xiphoseer)'s [lu-explorer](https://github.com/Xiphoseer/lu-explorer) repo
