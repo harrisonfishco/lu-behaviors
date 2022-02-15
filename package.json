@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
-  "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/harrisonfishco/lu-behaviors.git"
@@ -16,11 +12,5 @@
   "bugs": {
     "url": "https://github.com/harrisonfishco/lu-behaviors/issues"
   },
-  "homepage": "https://github.com/harrisonfishco/lu-behaviors#readme",
-  "dependencies": {
-    "express": "^4.17.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+  "homepage": "https://github.com/harrisonfishco/lu-behaviors#readme"
 }

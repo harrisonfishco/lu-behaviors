@@ -124,7 +124,7 @@ class NodeNetwork {
         if (behavior.templateID == 1) {
             node.label = "BasicAttack";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/knight_blade.png";
+            node.image = "./res/skills/knight_blade.png";
             this.add_child(id, behavior, level, 'on_success', 'success');
             this.add_child(id, behavior, level, 'on_fail_armor', 'fail armor');
             this.add_child(id, behavior, level, 'on_fail_blocked', 'fail blocked');
@@ -132,7 +132,7 @@ class NodeNetwork {
         else if (behavior.templateID == 2) {
             node.label = "TacArc";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_blow_dart.png";
+            node.image = "./res/skills/skills_blow_dart.png";
             this.add_child(id, behavior, level, 'action', '');
             this.add_child(id, behavior, level, 'blocked action', 'blocked');
         }
@@ -145,13 +145,13 @@ class NodeNetwork {
         }  else if (behavior.templateID == 4) {
             node.label = "Projectile Attack";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_flaming_arrow.png";
+            node.image = "./res/skills/skills_flaming_arrow.png";
           }
           else if (behavior.templateID == 5) {
             node.label = "Heal";
             //MODIFIED
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_healing.png";
+            node.image = "./res/skills/skills_healing.png";
             //END MOD
           }
           else if (behavior.templateID == 6) {
@@ -165,42 +165,42 @@ class NodeNetwork {
           else if (behavior.templateID == 7) {
             node.label = "AreaOfEffect";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/bubble_generator.png";
+            node.image = "./res/skills/bubble_generator.png";
             this.add_child(id, behavior, level, 'action', '');
           }
           else if (behavior.templateID == 8) {
             node.label = "Play Effect";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/disco_ball.png";
+            node.image = "./res/skills/disco_ball.png";
           }
           //MODIFIED START//
           else if(behavior.templateID == 9) {
               node.label = "Immunity";
               node.shape = 'image'
-              node.image = "/lu-res/textures/ui/inventory/skills/heart_shield.png"
+              node.image = "./res/skills/heart_shield.png"
           }
           else if(behavior.templateID == 10) {
               node.label = "Damage\nBuff"
               node.shape = 'image'
-              node.image = "/lu-res/textures/ui/inventory/skills/knight_challenge.png"
+              node.image = "./res/skills/knight_challenge.png"
           } 
           else if(behavior.templateID == 11) {
               node.label = "Damage\nAbsorbtion"
               node.shape = 'image'
-              node.image = '/lu-res/textures/ui/inventory/skills/cure_maelstrom.png'
+              node.image = './res/skills/cure_maelstrom.png'
           }
           //MODIFIED END
           else if (behavior.templateID == 12) {
             node.label = "OverTime";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/spark_thrower.png";
+            node.image = "./res/skills/spark_thrower.png";
             this.add_child(id, behavior, level, 'action', '');
           }
           else if (behavior.templateID == 13) {
             node.label = "Imagination";
             //MODIFIED START
             node.shape = 'image'
-            node.image = "/lu-res/textures/ui/inventory/skills/imagination_buff.png"
+            node.image = "./res/skills/imagination_buff.png"
             //MODIFIED END
           }
           else if (behavior.templateID == 14) {
@@ -210,23 +210,23 @@ class NodeNetwork {
           else if (behavior.templateID == 15) {
             node.label = "Stun";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/bonedaddy.png";
+            node.image = "./res/skills/bonedaddy.png";
           }
           else if (behavior.templateID == 16) {
             node.label = "Duration";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/spark_thrower.png";
+            node.image = "./res/skills/spark_thrower.png";
             this.add_child(id, behavior, level, 'action', '');
           }
           else if (behavior.templateID == 17) {
             node.label = "Knockback";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_repulsion.png";
+            node.image = "./res/skills/skills_repulsion.png";
           }
           else if (behavior.templateID == 18) {
             node.label = "AttackDelay";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/turtle_rush.png";
+            node.image = "./res/skills/turtle_rush.png";
             this.add_child(id, behavior, level, 'action', '');
           }
           //MODIFIED START
@@ -236,12 +236,12 @@ class NodeNetwork {
           else if(behavior.templateID == 20) {
               node.label = 'Fall Speed'
               node.shape = 'image'
-              node.image = '/lu-res/textures/ui/inventory/skills/darkness_falls.png'
+              node.image = './res/skills/darkness_falls.png'
           }
           else if(behavior.templateID == 21) {
               node.label = "Shield"
               node.shape = "image"
-              node.image = '/lu-res/textures/ui/inventory/skills/for_the_shogun.png'
+              node.image = './res/skills/for_the_shogun.png'
           }
           //MODIFIED END
           else if (behavior.templateID == 22) {
@@ -254,12 +254,12 @@ class NodeNetwork {
           else if(behavior.templateID == 24) {
               node.label = "Dark\nInspiration"
               node.shape = "image"
-              node.image = '/lu-res/textures/ui/inventory/skills/skills_dark_inspiration.png'
+              node.image = './res/skills/skills_dark_inspiration.png'
           }
           //MODIFIED END
           else if (behavior.templateID == 25) {
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_lucky.png";
+            node.image = "./res/skills/skills_lucky.png";
             node.label = "LootBuff";
           }
           //MODIFIED START
@@ -271,7 +271,7 @@ class NodeNetwork {
           {
             node.label = "Spawn";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/crabby.png";
+            node.image = "./res/skills/crabby.png";
           }
           //MODIFIED START
           else if(behavior.templateID == 28) {
@@ -298,19 +298,19 @@ class NodeNetwork {
           else if(behavior.templateID == 33) {
               node.label = "Consume\nItem"
               node.shape = 'image'
-              node.image = '/lu-res/textures/ui/inventory/skills/banana_rang.png'
+              node.image = './res/skills/banana_rang.png'
           }
           //MODIFIED END
           else if (behavior.templateID == 34) {
             node.label = "Skill Cast\nFailed";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_marks_the_spot.png";
+            node.image = "./res/skills/skills_marks_the_spot.png";
           }
           //MODIFIED START
           else if(behavior.templateID == 35) {
               node.label = "Imitation\nStink"
               node.shape = 'image'
-              node.image = "/lu-res/textures/ui/inventory/skills/stink.png"
+              node.image = "./res/skills/stink.png"
           }
           else if(behavior.templateID == 36) {
               node.label = "Candle Idle\nFlags"
@@ -318,7 +318,7 @@ class NodeNetwork {
           else if (behavior.templateID == 37) {
             node.label = "ApplyBuff";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_health_buff.png";
+            node.image = "./res/skills/skills_health_buff.png";
           }
           else if (behavior.templateID == 38) {
             node.label = "Chain";
@@ -330,7 +330,7 @@ class NodeNetwork {
           }
           else if (behavior.templateID == 39) {
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_whirlwind.png";
+            node.image = "./res/skills/skills_whirlwind.png";
             node.label = "ChangeOrientation";
           }
           else if (behavior.templateID == 40) {
@@ -339,12 +339,12 @@ class NodeNetwork {
           else if (behavior.templateID == 41) {
             node.label = "Interrupt";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_marks_the_spot.png";
+            node.image = "./res/skills/skills_marks_the_spot.png";
           }
           else if (behavior.templateID == 42) {
             node.label = "AlterCooldown";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/spark_thrower.png";
+            node.image = "./res/skills/spark_thrower.png";
           }
           else if (behavior.templateID == 43) {
             node.label = "ChargeUp";
@@ -361,7 +361,7 @@ class NodeNetwork {
           else if (behavior.templateID == 45) {
             node.label = "Start";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_freebuild.png";
+            node.image = "./res/skills/skills_freebuild.png";
             this.add_child(id, behavior, level, 'action');
           }
           else if (behavior.templateID == 46) {
@@ -370,7 +370,7 @@ class NodeNetwork {
           else if (behavior.templateID == 47) {
             node.label = "AlterChainDelay";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/spark_thrower.png";
+            node.image = "./res/skills/spark_thrower.png";
           }
           //MODIFIED START
           else if(behavior.templateID == 48) {
@@ -386,7 +386,7 @@ class NodeNetwork {
           else if (behavior.templateID == 51) {
             node.label = "ModularBuild";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/hats/thinking_hat.png";
+            node.image = "./res/hats/thinking_hat.png";
           }
           else if (behavior.templateID == 52) {
             node.label = "NPC\nCombat\nSkill";
@@ -410,7 +410,7 @@ class NodeNetwork {
         else if (behavior.templateID == 56) {
             node.label = "AirMovement";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/body_slam.png";
+            node.image = "./res/skills/body_slam.png";
             this.add_child(id, behavior, level, 'ground_action', 'ground');
             this.add_child(id, behavior, level, 'hit_action', 'hit');
             this.add_child(id, behavior, level, 'hit_action_enemy', 'hit enemy');
@@ -424,7 +424,7 @@ class NodeNetwork {
           else if (behavior.templateID == 58) {
             node.label = "PullToPoint";
             node.shape = 'image';
-            node.image = "/lu-res/textures/ui/inventory/skills/skills_snap_trap.png";
+            node.image = "./res/skills/skills_snap_trap.png";
         }
         //MODIFIED START
         else if(behavior.templateID == 59) {
